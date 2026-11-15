@@ -1,0 +1,6 @@
+{
+  "core": null,
+  "themes": ["./theme"],
+  "plugins": ["./blocks-plugin"],
+  "config": { "WP_DEBUG": true, "SCRIPT_DEBUG": true }
+}

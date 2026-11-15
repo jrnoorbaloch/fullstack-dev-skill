@@ -1,0 +1,29 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "starter/testimonial",
+  "version": "1.0.0",
+  "title": "Testimonial",
+  "category": "widgets",
+  "icon": "format-quote",
+  "description": "A customer quote with name, role and star rating.",
+  "keywords": ["quote", "review", "testimonial"],
+  "attributes": {
+    "quote": { "type": "string", "default": "" },
+    "author": { "type": "string", "default": "" },
+    "role": { "type": "string", "default": "" },
+    "rating": { "type": "number", "default": 5 }
+  },
+  "supports": {
+    "html": false,
+    "align": ["wide"],
+    "color": { "background": true, "text": true },
+    "spacing": { "padding": true, "margin": true },
+    "__experimentalBorder": { "radius": true }
+  },
+  "example": { "attributes": { "quote": "Fast, friendly and exactly what we needed.", "author": "Sara Khan", "role": "Owner, Bloom Café", "rating": 5 } },
+  "textdomain": "starter-blocks",
+  "editorScript": "file:./index.js",
+  "style": "file:./style-index.css",
+  "render": "file:./render.php"
+}

@@ -31,6 +31,8 @@
 2. في Claude افتح **Settings ← Capabilities ← Skills** (يجب تفعيل تنفيذ الشيفرة).
 3. اضغط **Upload skill**، واختر الملف، ثم فعّل المهارة.
 
+**بأمر واحد (npm أو pip):** ‎`npx github:jrnoorbaloch/fullstack-dev-skill install`‎ أو ‎`pip install git+https://github.com/jrnoorbaloch/fullstack-dev-skill`‎ ثم ‎`fullstack-dev-skill install`‎. تريد جزءًا فقط؟ الحزم: ‎`fullstack-web`‎، ‎`fullstack-mobile`‎، ‎`fullstack-desktop`‎، ‎`fullstack-motion-3d`‎، ‎`fullstack-wordpress`‎، ‎`fullstack-video`‎.
+
 **Claude Code:**
 
 <div dir="ltr">

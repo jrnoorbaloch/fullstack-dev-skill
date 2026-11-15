@@ -54,23 +54,46 @@ For every request, Claude follows a senior-engineer workflow:
 
 ## 📥 Installation
 
-### Option A: Claude app (Pro, Max, Team, Enterprise)
-1. Download **`fullstack-developer.zip`** from the [latest release](https://github.com/jrnoorbaloch/fullstack-dev-skill/releases/latest).
+### Option A: One command (npm or pip)
+```bash
+npx github:jrnoorbaloch/fullstack-dev-skill install          # complete skill → ~/.claude/skills
+pip install git+https://github.com/jrnoorbaloch/fullstack-dev-skill && fullstack-dev-skill install
+```
+| Command | What it does |
+|---|---|
+| `fullstack-dev-skill list` | Show all packs |
+| `fullstack-dev-skill install [pack]` | Install into Claude Code (`--project` for `./.claude/skills`, `--dir <path>`, `--force`) |
+| `fullstack-dev-skill uninstall [pack]` | Remove it |
+| `fullstack-dev-skill zip [pack] -o file.zip` | Build a zip to upload in the Claude app |
+
+(Once published to the registries: `npx fullstack-dev-skill install` / `pip install fullstack-dev-skill`.)
+
+### Option B: Claude app (Pro, Max, Team, Enterprise)
+1. Download **`fullstack-developer.zip`** (or a pack zip) from the [latest release](https://github.com/jrnoorbaloch/fullstack-dev-skill/releases/latest).
 2. In Claude, go to **Settings → Capabilities → Skills** (make sure code execution is enabled).
 3. Click **Upload skill**, select the zip file, and turn the skill on.
 4. Start prompting, for example: *"Build a website for my restaurant."*
 
-### Option B: Claude Code (includes slash commands)
+### Option C: Claude Code plugin (includes slash commands)
 ```bash
 /plugin marketplace add jrnoorbaloch/fullstack-dev-skill
-/plugin install fullstack-developer@fullstack-dev-skill
+/plugin install fullstack-developer@fullstack-dev-skill      # or a pack, e.g. fullstack-web@fullstack-dev-skill
 ```
-Or install only the skill manually:
-```bash
-git clone https://github.com/jrnoorbaloch/fullstack-dev-skill.git
-mkdir -p ~/.claude/skills
-cp -r fullstack-dev-skill/skills/fullstack-developer ~/.claude/skills/
-```
+
+## 🎒 Skill Packs
+Install only what you need. Packs are generated from the complete skill, so they never go out of date.
+
+| Pack | For | Templates |
+|---|---|---|
+| `fullstack-developer` | **Everything** (default) | all 9 |
+| `fullstack-web` | Websites, SaaS, dashboards, APIs, single-file artifacts | landing-page, nextjs-saas, fastapi-api, react-vite-shadcn |
+| `fullstack-mobile` | Android & iOS apps (Expo / Flutter) | expo-app, fastapi-api |
+| `fullstack-desktop` | Desktop software, POS, CLIs, scripts | python-desktop-pos |
+| `fullstack-motion-3d` | GSAP animation, Three.js 3D, slide decks | landing-page, react-vite-shadcn, html-slides |
+| `fullstack-wordpress` | Block themes and Gutenberg blocks | wordpress-block-theme |
+| `fullstack-video` | Remotion videos | remotion-video |
+
+Every pack also includes the core guides (design system, UI constraints, testing, deploy, prompt library) and the helper scripts.
 
 ---
 
@@ -101,6 +124,12 @@ More prompts for every project type: **[PROMPTS.md](PROMPTS.md)**
 ## 📁 Repository Structure
 ```
 .claude-plugin/                 Plugin + marketplace manifests (Claude Code)
+packs/                          Generated focused packs (do not edit — run tools/build_packs.py)
+packs.json                      Which guides/templates/commands go into each pack
+bin/cli.js · package.json       npm installer (no dependencies)
+python/ · pyproject.toml        pip installer
+tools/build_packs.py            Builds packs/ and release zips
+tests/                          Installer tests (node:test + pytest)
 commands/                       Slash commands (Claude Code)
 skills/fullstack-developer/
   SKILL.md                      Main skill instructions

@@ -29,6 +29,8 @@ Claude को सिर्फ़ एक प्रॉम्प्ट दें �
 2. Claude में **Settings → Capabilities → Skills** खोलें (Code execution चालू होना चाहिए)।
 3. **Upload skill** दबाएँ, zip चुनें और स्किल चालू करें।
 
+**एक कमांड से (npm या pip):** `npx github:jrnoorbaloch/fullstack-dev-skill install` या `pip install git+https://github.com/jrnoorbaloch/fullstack-dev-skill` फिर `fullstack-dev-skill install`। सिर्फ़ एक हिस्सा चाहिए? पैक: `fullstack-web`, `fullstack-mobile`, `fullstack-desktop`, `fullstack-motion-3d`, `fullstack-wordpress`, `fullstack-video`।
+
 **Claude Code:**
 ```bash
 /plugin marketplace add jrnoorbaloch/fullstack-dev-skill

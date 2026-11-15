@@ -114,3 +114,36 @@ jobs:
       - name: Build blocks
         working-directory: skills/fullstack-developer/templates/wordpress-block-theme/blocks-plugin
         run: npm install --no-audit --no-fund && npm run build
+
+  packages:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Packs are up to date with the complete skill
+        run: python tools/build_packs.py --check
+      - name: Versions agree (package.json, pyproject.toml, plugin.json)
+        run: |
+          python - <<'PY'
+          import json, re
+          npm = json.load(open("package.json"))["version"]
+          py = re.search(r'^version = "(.+)"', open("pyproject.toml").read(), re.M).group(1)
+          plugin = json.load(open(".claude-plugin/plugin.json"))["version"]
+          assert npm == py == plugin, (npm, py, plugin)
+          print("version", npm)
+          PY
+      - name: npm CLI tests
+        run: npm test
+      - name: npm package contents
+        run: npm pack --dry-run 2>&1 | tail -5
+      - name: Python package build + tests
+        run: |
+          pip install -q build pytest
+          python -m build -o /tmp/pydist
+          pip install -q /tmp/pydist/*.whl
+          pytest -q tests/test_python_cli.py

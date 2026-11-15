@@ -1,0 +1,10 @@
+{
+  "name": "fullstack-wordpress",
+  "description": "WordPress pack of the Full-Stack Developer skill. WordPress engineer that builds block themes (theme.json, templates, patterns, style variations) and custom Gutenberg blocks from a plain-language prompt in any language.",
+  "version": "2.1.0",
+  "author": {
+    "name": "jrnoorbaloch"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/jrnoorbaloch/fullstack-dev-skill"
+}

@@ -1,0 +1,10 @@
+{
+  "name": "fullstack-motion-3d",
+  "description": "Animation, 3D & Presentations pack of the Full-Stack Developer skill. Creative front-end engineer that builds premium animated websites with GSAP (ScrollTrigger, SplitText, Flip), Three.js / React Three Fiber 3D experiences and animated HTML slide decks from a plain-language prompt in any language.",
+  "version": "2.1.0",
+  "author": {
+    "name": "jrnoorbaloch"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/jrnoorbaloch/fullstack-dev-skill"
+}

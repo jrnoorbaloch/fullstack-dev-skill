@@ -8,6 +8,7 @@ on:
 
 permissions:
   contents: write
+  id-token: write   # PyPI trusted publishing (optional)
 
 # Publishing a release also creates the tag, which fires both triggers; run them one after another.
 concurrency:
@@ -17,30 +18,66 @@ concurrency:
 jobs:
   release:
     runs-on: ubuntu-latest
+    env:
+      NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
     steps:
       - uses: actions/checkout@v4
-      - name: Build skill zip
-        run: |
-          cd skills
-          zip -r ../fullstack-developer.zip fullstack-developer -x "*/node_modules/*" "*/__pycache__/*" "*/.pytest_cache/*"
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          registry-url: https://registry.npmjs.org
+
       - name: Resolve tag
         run: echo "TAG=${{ github.event.release.tag_name || github.ref_name }}" >> "$GITHUB_ENV"
-      - name: Extract release notes from CHANGELOG
+
+      - name: Build skill zips (complete skill + every pack)
+        run: python tools/build_packs.py --zips dist/zips
+
+      - name: Build npm package
+        run: npm pack --pack-destination dist/
+
+      - name: Build Python package
+        run: pip install -q build && python -m build -o dist/python
+
+      - name: Release notes from CHANGELOG
         run: |
           VERSION="${TAG#v}"
           awk -v v="$VERSION" '$0 ~ "^## \\[" v "\\]" {f=1; next} /^## \[/ {f=0} f' CHANGELOG.md > notes.md
           {
             echo
             echo "### Install"
-            echo "- **Claude app:** download \`fullstack-developer.zip\` below → Settings → Capabilities → Skills → Upload skill."
+            echo "- **Claude app:** download a \`.zip\` below → Settings → Capabilities → Skills → Upload skill"
+            echo "- **npm:** \`npx github:${GITHUB_REPOSITORY} install\`"
+            echo "- **pip:** \`pip install git+https://github.com/${GITHUB_REPOSITORY}\` then \`fullstack-dev-skill install\`"
             echo "- **Claude Code:** \`/plugin marketplace add ${GITHUB_REPOSITORY}\`"
           } >> notes.md
-      - name: Publish release
+
+      - name: Publish GitHub release assets
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
+          ASSETS="dist/zips/*.zip dist/*.tgz dist/python/*"
           if gh release view "$TAG" >/dev/null 2>&1; then
-            gh release upload "$TAG" fullstack-developer.zip --clobber
+            gh release upload "$TAG" $ASSETS --clobber
           else
-            gh release create "$TAG" fullstack-developer.zip --title "$TAG" --notes-file notes.md
+            gh release create "$TAG" $ASSETS --title "$TAG" --notes-file notes.md
           fi
+
+      # ---- Optional registry publishing (enable once, see README "Publishing") ----
+      - name: Publish to npm
+        if: ${{ env.NPM_TOKEN != '' && github.event_name == 'release' }}
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          VERSION=$(node -p "require('./package.json').version")
+          if npm view "fullstack-dev-skill@$VERSION" version >/dev/null 2>&1; then echo "npm $VERSION already published"; else npm publish --access public --provenance; fi
+
+      - name: Publish to PyPI
+        if: ${{ vars.PUBLISH_PYPI == 'true' && github.event_name == 'release' }}
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          packages-dir: dist/python
+          skip-existing: true

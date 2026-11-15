@@ -29,6 +29,8 @@ Dale a Claude una sola instrucción y construirá un **sitio web, aplicación we
 2. En Claude ve a **Settings → Capabilities → Skills** (la ejecución de código debe estar activada).
 3. Pulsa **Upload skill**, elige el zip y activa la skill.
 
+**Con un comando (npm o pip):** `npx github:jrnoorbaloch/fullstack-dev-skill install` o `pip install git+https://github.com/jrnoorbaloch/fullstack-dev-skill` y luego `fullstack-dev-skill install`. ¿Solo una parte? Paquetes: `fullstack-web`, `fullstack-mobile`, `fullstack-desktop`, `fullstack-motion-3d`, `fullstack-wordpress`, `fullstack-video`.
+
 **Claude Code:**
 ```bash
 /plugin marketplace add jrnoorbaloch/fullstack-dev-skill

@@ -1,0 +1,10 @@
+{
+  "name": "fullstack-desktop",
+  "description": "Desktop Software & Scripts pack of the Full-Stack Developer skill. Senior desktop engineer that builds Windows, macOS and Linux software, POS and inventory systems, CLIs and automation scripts from a plain-language prompt in any language \u2014 Python (Tkinter/PySide6), Tauri, Electron, SQLite, installers.",
+  "version": "2.1.0",
+  "author": {
+    "name": "jrnoorbaloch"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/jrnoorbaloch/fullstack-dev-skill"
+}

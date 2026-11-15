@@ -31,6 +31,8 @@ Claude کو صرف ایک پرامپٹ دیں، اور وہ آپ کے لیے م�
 2. Claude میں **Settings ← Capabilities ← Skills** پر جائیں (Code execution آن ہونا چاہیے)۔
 3. **Upload skill** دبائیں، zip فائل منتخب کریں اور اسکل آن کر دیں۔
 
+**ایک کمانڈ سے (npm یا pip):** ‎`npx github:jrnoorbaloch/fullstack-dev-skill install`‎ یا ‎`pip install git+https://github.com/jrnoorbaloch/fullstack-dev-skill`‎ پھر ‎`fullstack-dev-skill install`‎۔ صرف ایک حصہ چاہیے؟ ‎`fullstack-web`‎، ‎`fullstack-mobile`‎، ‎`fullstack-desktop`‎، ‎`fullstack-motion-3d`‎، ‎`fullstack-wordpress`‎، ‎`fullstack-video`‎۔
+
 **Claude Code:**
 
 <div dir="ltr">

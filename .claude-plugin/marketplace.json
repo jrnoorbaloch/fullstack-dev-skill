@@ -1,11 +1,47 @@
 {
   "name": "fullstack-dev-skill",
-  "owner": { "name": "jrnoorbaloch" },
+  "owner": {
+    "name": "jrnoorbaloch"
+  },
+  "metadata": {
+    "description": "Full-Stack Developer skill for Claude — complete skill plus focused packs.",
+    "version": "2.1.0"
+  },
   "plugins": [
     {
       "name": "fullstack-developer",
       "source": "./",
-      "description": "Build websites, web apps, APIs, mobile apps and desktop software from a simple prompt in any language."
+      "description": "Complete skill: websites, web apps, APIs, mobile and desktop apps, GSAP and 3D sites, WordPress, slides and videos from a simple prompt in any language."
+    },
+    {
+      "name": "fullstack-web",
+      "source": "./packs/fullstack-web",
+      "description": "Web & SaaS pack — Senior web engineer that builds websites, web apps, SaaS, dashboards, e-commerce, APIs and single-file React artifacts from a plain-language prompt in any language — Next.js, React, Tailwind, shadcn/ui, Supabase, FastAPI, payments, SEO."
+    },
+    {
+      "name": "fullstack-mobile",
+      "source": "./packs/fullstack-mobile",
+      "description": "Mobile Apps pack — Senior mobile engineer that builds Android and iOS apps from a plain-language prompt in any language — React Native + Expo (or Flutter), Supabase backends, offline storage, push notifications, EAS builds to APK, Play Store and App Store."
+    },
+    {
+      "name": "fullstack-desktop",
+      "source": "./packs/fullstack-desktop",
+      "description": "Desktop Software & Scripts pack — Senior desktop engineer that builds Windows, macOS and Linux software, POS and inventory systems, CLIs and automation scripts from a plain-language prompt in any language — Python (Tkinter/PySide6), Tauri, Electron, SQLite, installers."
+    },
+    {
+      "name": "fullstack-motion-3d",
+      "source": "./packs/fullstack-motion-3d",
+      "description": "Animation, 3D & Presentations pack — Creative front-end engineer that builds premium animated websites with GSAP (ScrollTrigger, SplitText, Flip), Three.js / React Three Fiber 3D experiences and animated HTML slide decks from a plain-language prompt in any language."
+    },
+    {
+      "name": "fullstack-wordpress",
+      "source": "./packs/fullstack-wordpress",
+      "description": "WordPress pack — WordPress engineer that builds block themes (theme.json, templates, patterns, style variations) and custom Gutenberg blocks from a plain-language prompt in any language."
+    },
+    {
+      "name": "fullstack-video",
+      "source": "./packs/fullstack-video",
+      "description": "Programmatic Video pack — Video engineer that creates promo videos, social clips (16:9 and 9:16), animated captions and data-driven personalized videos with Remotion (React → MP4) from a plain-language prompt in any language."
     }
   ]
 }

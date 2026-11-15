@@ -1,0 +1,10 @@
+{
+  "name": "fullstack-video",
+  "description": "Programmatic Video pack of the Full-Stack Developer skill. Video engineer that creates promo videos, social clips (16:9 and 9:16), animated captions and data-driven personalized videos with Remotion (React \u2192 MP4) from a plain-language prompt in any language.",
+  "version": "2.1.0",
+  "author": {
+    "name": "jrnoorbaloch"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/jrnoorbaloch/fullstack-dev-skill"
+}

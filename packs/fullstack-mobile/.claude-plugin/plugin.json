@@ -1,0 +1,10 @@
+{
+  "name": "fullstack-mobile",
+  "description": "Mobile Apps pack of the Full-Stack Developer skill. Senior mobile engineer that builds Android and iOS apps from a plain-language prompt in any language \u2014 React Native + Expo (or Flutter), Supabase backends, offline storage, push notifications, EAS builds to APK, Play Store and App Store.",
+  "version": "2.1.0",
+  "author": {
+    "name": "jrnoorbaloch"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/jrnoorbaloch/fullstack-dev-skill"
+}

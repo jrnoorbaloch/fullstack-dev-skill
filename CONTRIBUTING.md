@@ -24,7 +24,18 @@ python skills/fullstack-developer/scripts/verify.py skills/fullstack-developer/t
 ```
 The **Validate** GitHub Action also checks the skill structure on every pull request.
 
+## Packs
+`packs/` is generated. Edit the complete skill in `skills/fullstack-developer/` (and `packs.json` to change what a pack contains), then run:
+```bash
+python tools/build_packs.py          # regenerate packs/
+python tools/build_packs.py --check  # what CI runs
+```
+
 ## Releasing (maintainers)
-1. Update `CHANGELOG.md` and the `version` in `.claude-plugin/plugin.json`.
+1. Update `CHANGELOG.md` and bump the version in **all three** files: `package.json`, `pyproject.toml`, `.claude-plugin/plugin.json` (CI checks they match), then run `python tools/build_packs.py`.
 2. Publish a GitHub Release with a new tag (e.g. `v1.2.0`), or push the tag: `git tag v1.2.0 && git push origin v1.2.0`.
-3. The **Release** workflow builds `fullstack-developer.zip` and attaches it to the release automatically.
+3. The **Release** workflow attaches every skill zip, the npm tarball and the Python wheel automatically.
+
+### Publishing to npm and PyPI (one-time setup)
+- **npm:** create an access token on npmjs.com (Automation / granular, publish rights) → repo **Settings → Secrets and variables → Actions → New secret** `NPM_TOKEN`. Every published release then runs `npm publish`.
+- **PyPI:** on pypi.org → *Your account → Publishing → Add a pending publisher*: project `fullstack-dev-skill`, owner `jrnoorbaloch`, repo `fullstack-dev-skill`, workflow `release.yml`. Then add the repository **variable** `PUBLISH_PYPI` = `true`.

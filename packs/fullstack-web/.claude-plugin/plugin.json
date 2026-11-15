@@ -1,0 +1,10 @@
+{
+  "name": "fullstack-web",
+  "description": "Web & SaaS pack of the Full-Stack Developer skill. Senior web engineer that builds websites, web apps, SaaS, dashboards, e-commerce, APIs and single-file React artifacts from a plain-language prompt in any language \u2014 Next.js, React, Tailwind, shadcn/ui, Supabase, FastAPI, payments, SEO.",
+  "version": "2.1.0",
+  "author": {
+    "name": "jrnoorbaloch"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/jrnoorbaloch/fullstack-dev-skill"
+}

@@ -1,0 +1,17 @@
+{
+  "name": "fullstack-dev-skill",
+  "version": "2.1.0",
+  "description": "Install the Full-Stack Developer skill for Claude (or one of its focused packs) into Claude Code, or build a zip for the Claude app.",
+  "keywords": ["claude", "claude-code", "claude-skill", "agent-skills", "fullstack", "gsap", "threejs", "wordpress", "remotion", "nextjs"],
+  "homepage": "https://github.com/jrnoorbaloch/fullstack-dev-skill#readme",
+  "bugs": "https://github.com/jrnoorbaloch/fullstack-dev-skill/issues",
+  "repository": { "type": "git", "url": "git+https://github.com/jrnoorbaloch/fullstack-dev-skill.git" },
+  "license": "MIT",
+  "author": "jrnoorbaloch",
+  "bin": { "fullstack-dev-skill": "bin/cli.js" },
+  "files": ["bin/", "skills/", "packs/", "packs.json", "README.md", "LICENSE", "!**/node_modules", "!**/__pycache__"],
+  "engines": { "node": ">=18" },
+  "scripts": {
+    "test": "node --test tests/cli.test.mjs"
+  }
+}

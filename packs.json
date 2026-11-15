@@ -1,0 +1,58 @@
+{
+  "source": "skills/fullstack-developer",
+  "core": {
+    "references": ["design-system.md", "ui-constraints.md", "testing.md", "deploy.md", "prompts.md"],
+    "scripts": ["scaffold.py", "verify.py", "gen_env_example.py"]
+  },
+  "packs": {
+    "fullstack-developer": {
+      "title": "Full-Stack Developer (complete)",
+      "description": null,
+      "references": "*",
+      "templates": "*",
+      "commands": "*"
+    },
+    "fullstack-web": {
+      "title": "Web & SaaS",
+      "description": "Senior web engineer that builds websites, web apps, SaaS, dashboards, e-commerce, APIs and single-file React artifacts from a plain-language prompt in any language — Next.js, React, Tailwind, shadcn/ui, Supabase, FastAPI, payments, SEO. Use when the user asks to build, fix or deploy a website, web app, backend, API, dashboard, store or interactive web tool.",
+      "references": ["web.md", "backend-db.md", "tailwind-system.md", "react-patterns.md", "artifacts.md", "payments.md", "industries.md", "ai-features.md", "seo-performance.md"],
+      "templates": ["landing-page", "nextjs-saas", "fastapi-api", "react-vite-shadcn"],
+      "commands": ["new-website", "new-webapp", "new-api", "new-artifact", "fix-bug", "review", "deploy"]
+    },
+    "fullstack-mobile": {
+      "title": "Mobile Apps",
+      "description": "Senior mobile engineer that builds Android and iOS apps from a plain-language prompt in any language — React Native + Expo (or Flutter), Supabase backends, offline storage, push notifications, EAS builds to APK, Play Store and App Store. Use when the user asks to build, fix or publish a mobile app.",
+      "references": ["mobile.md", "backend-db.md", "payments.md", "industries.md", "ai-features.md"],
+      "templates": ["expo-app", "fastapi-api"],
+      "commands": ["new-mobile", "new-api", "fix-bug", "review", "deploy"]
+    },
+    "fullstack-desktop": {
+      "title": "Desktop Software & Scripts",
+      "description": "Senior desktop engineer that builds Windows, macOS and Linux software, POS and inventory systems, CLIs and automation scripts from a plain-language prompt in any language — Python (Tkinter/PySide6), Tauri, Electron, SQLite, installers. Use when the user asks to build desktop software, a POS, a CLI tool or a script.",
+      "references": ["desktop.md", "industries.md"],
+      "templates": ["python-desktop-pos"],
+      "commands": ["new-desktop", "fix-bug", "review"]
+    },
+    "fullstack-motion-3d": {
+      "title": "Animation, 3D & Presentations",
+      "description": "Creative front-end engineer that builds premium animated websites with GSAP (ScrollTrigger, SplitText, Flip), Three.js / React Three Fiber 3D experiences and animated HTML slide decks from a plain-language prompt in any language. Use when the user asks for animations, scroll effects, 3D scenes, product viewers, pitch decks or presentations.",
+      "references": ["animation-gsap.md", "threejs.md", "slides.md", "react-patterns.md", "tailwind-system.md", "seo-performance.md"],
+      "templates": ["landing-page", "react-vite-shadcn", "html-slides"],
+      "commands": ["new-animated-site", "new-3d", "new-slides", "new-artifact", "review"]
+    },
+    "fullstack-wordpress": {
+      "title": "WordPress",
+      "description": "WordPress engineer that builds block themes (theme.json, templates, patterns, style variations) and custom Gutenberg blocks from a plain-language prompt in any language. Use when the user asks for a WordPress site, theme, pattern, block or plugin.",
+      "references": ["wordpress.md", "seo-performance.md", "industries.md"],
+      "templates": ["wordpress-block-theme"],
+      "commands": ["new-wordpress", "fix-bug", "review"]
+    },
+    "fullstack-video": {
+      "title": "Programmatic Video",
+      "description": "Video engineer that creates promo videos, social clips (16:9 and 9:16), animated captions and data-driven personalized videos with Remotion (React → MP4) from a plain-language prompt in any language. Use when the user asks to make a video, reel, short, animated ad or video template.",
+      "references": ["remotion.md", "animation-gsap.md"],
+      "templates": ["remotion-video"],
+      "commands": ["new-video", "review"]
+    }
+  }
+}

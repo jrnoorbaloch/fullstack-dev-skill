@@ -2,6 +2,14 @@
 
 All notable changes to this project are documented here. Versions follow [Semantic Versioning](https://semver.org/).
 
+## [2.1.0] — 2026-11-15
+### Added
+- **Skill packs**: `fullstack-web`, `fullstack-mobile`, `fullstack-desktop`, `fullstack-motion-3d`, `fullstack-wordpress`, `fullstack-video`, generated from the complete skill by `tools/build_packs.py` (configured in `packs.json`). Each is a Claude Code plugin in the marketplace and a separate zip on every release.
+- **npm installer** (`bin/cli.js`, zero dependencies): `list`, `install [pack]`, `uninstall`, `zip` with `--project`, `--dir`, `--force`, `-o`. Works today with `npx github:jrnoorbaloch/fullstack-dev-skill`.
+- **pip installer** (`fullstack_dev_skill`): the same commands, installable with `pip install git+https://github.com/jrnoorbaloch/fullstack-dev-skill`.
+- Release workflow attaches 7 skill zips, the npm tarball and the Python wheel/sdist; optional automatic publishing to npm (`NPM_TOKEN` secret) and PyPI (trusted publishing + `PUBLISH_PYPI` variable).
+- CI checks that packs are up to date, versions agree, and runs installer tests for npm and Python.
+
 ## [2.0.0] — 2026-11-15
 ### Added
 - **GSAP animation** guide (`animation-gsap.md`): timelines, ScrollTrigger (pinning, scrubbing, horizontal scroll, batch), SplitText, Flip, Draggable, SVG plugins, `useGSAP` for React, `gsap.matchMedia()` reduced-motion pattern, performance rules and ready-made recipes.
