@@ -28,12 +28,12 @@ Har programming language support: JavaScript/TypeScript, Python, PHP/Laravel, Ja
 
 ### Option B — Claude Code (terminal)
 ```bash
-/plugin marketplace add YOUR-USERNAME/fullstack-dev-skill
+/plugin marketplace add jrnoorbaloch/fullstack-dev-skill
 /plugin install fullstack-developer@fullstack-dev-skill
 ```
 Ya manually:
 ```bash
-git clone https://github.com/YOUR-USERNAME/fullstack-dev-skill.git
+git clone https://github.com/jrnoorbaloch/fullstack-dev-skill.git
 mkdir -p ~/.claude/skills
 cp -r fullstack-dev-skill/skills/fullstack-developer ~/.claude/skills/
 ```
