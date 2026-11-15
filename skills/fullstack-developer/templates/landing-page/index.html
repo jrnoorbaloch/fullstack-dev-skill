@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{{BRAND}} — {{TAGLINE}}</title>
+  <meta name="description" content="{{TAGLINE}}" />
+  <meta property="og:title" content="{{BRAND}}" />
+  <meta property="og:description" content="{{TAGLINE}}" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = { darkMode: 'class', theme: { extend: { colors: { brand: { 500: '#4f46e5', 600: '#4338ca' } } } } };
+  </script>
+</head>
+<body class="bg-white text-slate-800 antialiased dark:bg-slate-950 dark:text-slate-100">
+  <!-- Navbar -->
+  <header class="sticky top-0 z-30 border-b border-slate-200/70 bg-white/80 backdrop-blur dark:border-slate-800 dark:bg-slate-950/80">
+    <nav class="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
+      <a href="#" class="text-lg font-bold">{{BRAND}}</a>
+      <button id="menuBtn" class="md:hidden" aria-label="Open menu" aria-expanded="false">☰</button>
+      <ul id="menu" class="hidden gap-6 text-sm md:flex">
+        <li><a href="#features" class="hover:text-brand-500">Features</a></li>
+        <li><a href="#pricing" class="hover:text-brand-500">Pricing</a></li>
+        <li><a href="#faq" class="hover:text-brand-500">FAQ</a></li>
+        <li><a href="#contact" class="hover:text-brand-500">Contact</a></li>
+      </ul>
+      <div class="hidden items-center gap-3 md:flex">
+        <button id="themeBtn" aria-label="Toggle dark mode" class="rounded-lg border px-2 py-1 text-sm dark:border-slate-700">🌓</button>
+        <a href="#contact" class="rounded-lg bg-brand-500 px-4 py-2 text-sm font-semibold text-white hover:bg-brand-600">Get started</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="mx-auto max-w-6xl px-4 py-20 text-center md:py-28">
+      <h1 class="text-4xl font-extrabold tracking-tight md:text-6xl">{{HEADLINE}}</h1>
+      <p class="mx-auto mt-5 max-w-2xl text-lg text-slate-600 dark:text-slate-400">{{TAGLINE}}</p>
+      <div class="mt-8 flex justify-center gap-3">
+        <a href="#contact" class="rounded-lg bg-brand-500 px-6 py-3 font-semibold text-white hover:bg-brand-600">Get started</a>
+        <a href="#features" class="rounded-lg border px-6 py-3 font-semibold dark:border-slate-700">Learn more</a>
+      </div>
+    </section>
+
+    <!-- Features -->
+    <section id="features" class="bg-slate-50 py-20 dark:bg-slate-900">
+      <div class="mx-auto max-w-6xl px-4">
+        <h2 class="text-center text-3xl font-bold">Why choose {{BRAND}}</h2>
+        <div class="mt-12 grid gap-6 md:grid-cols-3">
+          <article class="rounded-2xl bg-white p-6 shadow-sm dark:bg-slate-800"><div class="text-3xl">⚡</div><h3 class="mt-3 font-semibold">Fast</h3><p class="mt-2 text-sm text-slate-600 dark:text-slate-400">Describe the first benefit here.</p></article>
+          <article class="rounded-2xl bg-white p-6 shadow-sm dark:bg-slate-800"><div class="text-3xl">🔒</div><h3 class="mt-3 font-semibold">Reliable</h3><p class="mt-2 text-sm text-slate-600 dark:text-slate-400">Describe the second benefit here.</p></article>
+          <article class="rounded-2xl bg-white p-6 shadow-sm dark:bg-slate-800"><div class="text-3xl">💬</div><h3 class="mt-3 font-semibold">Supported</h3><p class="mt-2 text-sm text-slate-600 dark:text-slate-400">Describe the third benefit here.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing -->
+    <section id="pricing" class="mx-auto max-w-6xl px-4 py-20">
+      <h2 class="text-center text-3xl font-bold">Pricing</h2>
+      <div class="mt-12 grid gap-6 md:grid-cols-3">
+        <div class="rounded-2xl border p-6 dark:border-slate-800"><h3 class="font-semibold">Basic</h3><p class="mt-2 text-3xl font-bold">$0</p><ul class="mt-4 space-y-2 text-sm"><li>✓ Feature one</li><li>✓ Feature two</li></ul></div>
+        <div class="rounded-2xl border-2 border-brand-500 p-6"><h3 class="font-semibold">Pro</h3><p class="mt-2 text-3xl font-bold">$19</p><ul class="mt-4 space-y-2 text-sm"><li>✓ Everything in Basic</li><li>✓ Feature three</li></ul></div>
+        <div class="rounded-2xl border p-6 dark:border-slate-800"><h3 class="font-semibold">Business</h3><p class="mt-2 text-3xl font-bold">$49</p><ul class="mt-4 space-y-2 text-sm"><li>✓ Everything in Pro</li><li>✓ Priority support</li></ul></div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="bg-slate-50 py-20 dark:bg-slate-900">
+      <div class="mx-auto max-w-3xl px-4">
+        <h2 class="text-center text-3xl font-bold">FAQ</h2>
+        <details class="mt-8 rounded-xl bg-white p-4 dark:bg-slate-800"><summary class="cursor-pointer font-semibold">Question one?</summary><p class="mt-2 text-sm">Answer one.</p></details>
+        <details class="mt-3 rounded-xl bg-white p-4 dark:bg-slate-800"><summary class="cursor-pointer font-semibold">Question two?</summary><p class="mt-2 text-sm">Answer two.</p></details>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="mx-auto max-w-xl px-4 py-20">
+      <h2 class="text-center text-3xl font-bold">Contact us</h2>
+      <form id="contactForm" class="mt-8 space-y-4">
+        <label class="block text-sm font-medium">Name<input required name="name" class="mt-1 w-full rounded-lg border px-3 py-2 dark:border-slate-700 dark:bg-slate-900" /></label>
+        <label class="block text-sm font-medium">Email<input required type="email" name="email" class="mt-1 w-full rounded-lg border px-3 py-2 dark:border-slate-700 dark:bg-slate-900" /></label>
+        <label class="block text-sm font-medium">Message<textarea required name="message" rows="4" class="mt-1 w-full rounded-lg border px-3 py-2 dark:border-slate-700 dark:bg-slate-900"></textarea></label>
+        <button class="w-full rounded-lg bg-brand-500 py-3 font-semibold text-white hover:bg-brand-600">Send</button>
+        <p id="formStatus" role="status" class="text-center text-sm"></p>
+      </form>
+    </section>
+  </main>
+
+  <footer class="border-t py-8 text-center text-sm text-slate-500 dark:border-slate-800">© <span id="year"></span> {{BRAND}}. All rights reserved.</footer>
+
+  <!-- WhatsApp button: replace {{WHATSAPP}} with country code + number, e.g. 923001234567 -->
+  <a href="https://wa.me/{{WHATSAPP}}" target="_blank" rel="noopener" aria-label="Chat on WhatsApp" class="fixed bottom-5 right-5 rounded-full bg-green-500 px-4 py-3 text-white shadow-lg">💬</a>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const menuBtn = document.getElementById('menuBtn'), menu = document.getElementById('menu');
+    menuBtn.addEventListener('click', () => {
+      const open = menu.classList.toggle('hidden') === false;
+      menu.classList.toggle('flex', open);
+      menu.classList.toggle('absolute', open); menu.classList.toggle('top-14', open); menu.classList.toggle('left-0', open);
+      menu.classList.toggle('w-full', open); menu.classList.toggle('flex-col', open); menu.classList.toggle('bg-white', open); menu.classList.toggle('p-4', open);
+      menuBtn.setAttribute('aria-expanded', String(open));
+    });
+    const root = document.documentElement;
+    try { if (localStorage.getItem('theme') === 'dark') root.classList.add('dark'); } catch {}
+    document.getElementById('themeBtn').addEventListener('click', () => {
+      root.classList.toggle('dark');
+      try { localStorage.setItem('theme', root.classList.contains('dark') ? 'dark' : 'light'); } catch {}
+    });
+    // Contact form: wire to Formspree / Netlify Forms / your API endpoint.
+    document.getElementById('contactForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const status = document.getElementById('formStatus');
+      const endpoint = '{{FORM_ENDPOINT}}';
+      if (endpoint.startsWith('{{')) { status.textContent = 'Thanks! (Set FORM_ENDPOINT to receive messages.)'; e.target.reset(); return; }
+      try {
+        const res = await fetch(endpoint, { method: 'POST', body: new FormData(e.target), headers: { Accept: 'application/json' } });
+        status.textContent = res.ok ? 'Thanks! We will get back to you soon.' : 'Something went wrong. Please try again.';
+        if (res.ok) e.target.reset();
+      } catch { status.textContent = 'Network error. Please try again.'; }
+    });
+  </script>
+</body>
+</html>

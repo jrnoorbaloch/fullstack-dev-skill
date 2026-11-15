@@ -1,0 +1,21 @@
+name: ✨ Feature or template request
+description: Suggest a new stack, template, guide, prompt or industry
+labels: [enhancement]
+body:
+  - type: textarea
+    id: idea
+    attributes:
+      label: What should the skill be able to do?
+    validations:
+      required: true
+  - type: textarea
+    id: example
+    attributes:
+      label: Example prompt
+      description: How would you ask Claude for it?
+  - type: checkboxes
+    id: help
+    attributes:
+      label: Contribution
+      options:
+        - label: I'd like to submit a pull request for this

@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: 💬 Prompt library
+    url: https://github.com/jrnoorbaloch/fullstack-dev-skill/blob/main/PROMPTS.md
+    about: Ready-made prompts for websites, apps, mobile and desktop software

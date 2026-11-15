@@ -1,0 +1,39 @@
+name: Release
+
+on:
+  push:
+    tags: ["v*"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build skill zip
+        run: |
+          cd skills
+          zip -r ../fullstack-developer.zip fullstack-developer -x "*/node_modules/*" "*/__pycache__/*" "*/.pytest_cache/*"
+      - name: Extract release notes from CHANGELOG
+        run: |
+          VERSION="${GITHUB_REF_NAME#v}"
+          awk -v v="$VERSION" '$0 ~ "^## \\[" v "\\]" {f=1; next} /^## \[/ {f=0} f' CHANGELOG.md > notes.md
+          {
+            echo
+            echo "### Install"
+            echo "- **Claude app:** download \`fullstack-developer.zip\` below → Settings → Capabilities → Skills → Upload skill."
+            echo "- **Claude Code:** \`/plugin marketplace add ${GITHUB_REPOSITORY}\`"
+          } >> notes.md
+      - name: Publish release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          TAG="${GITHUB_REF_NAME}"
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            gh release upload "$TAG" fullstack-developer.zip --clobber
+          else
+            gh release create "$TAG" fullstack-developer.zip --title "$TAG" --notes-file notes.md
+          fi

@@ -36,13 +36,30 @@ Any programming language the user names (PHP/Laravel, Django, Java/Spring, C#/.N
 
 Read the matching reference file before building.
 
+## 2b. Starter templates & scripts (use them — faster and fewer bugs)
+| Template (`templates/`) | What it is |
+|---|---|
+| `landing-page` | Responsive Tailwind landing page: navbar, hero, features, pricing, FAQ, contact form, dark mode, WhatsApp button |
+| `nextjs-saas` | Next.js 15 + Supabase: magic-link auth, protected dashboard, per-user CRUD with RLS, zod, Vitest (builds clean) |
+| `expo-app` | Expo Router tabs app, light/dark theme, offline storage, Supabase client, EAS build profiles |
+| `fastapi-api` | FastAPI + SQLModel: JWT auth, per-user CRUD, pagination/search, CORS, pytest suite |
+| `python-desktop-pos` | Offline Tkinter + SQLite POS: barcode cart, discount/tax, receipts, stock alerts, reports, CSV, PyInstaller |
+
+Scripts (`scripts/`, Python 3, no dependencies):
+- `python scripts/scaffold.py --list` / `python scripts/scaffold.py <template> <dir> --set BRAND="Ali Bakery"` — copy a template and fill `{{PLACEHOLDERS}}`.
+- `python scripts/verify.py <dir>` — detects Node / Python / Rust / Go / Flutter / PHP / static and runs install, lint, test, build. Run it before handing over.
+- `python scripts/gen_env_example.py <dir>` — scans code for env vars and writes `.env.example`.
+
+Start from the closest template, then extend it to the user's exact request. If no template fits, build from scratch following the references.
+
 ## 3. Quality bar (non-negotiable)
 - **Complete & runnable**: `package.json`/`requirements.txt` with real versions, scripts for `dev`, `build`, `start`, `test`.
 - **Structure**: clear folders (`src/`, `components/`, `lib/`, `app/`, `api/`, `tests/`), small focused files.
-- **Design**: modern, responsive (mobile-first), accessible (semantic HTML, labels, alt text, contrast, keyboard nav), consistent spacing and type scale, dark mode when cheap. Avoid generic template look — pick a clear visual direction.
+- **Design**: follow `references/design-system.md` — pick one visual direction, use tokens, mobile-first, accessible (semantic HTML, labels, alt text, contrast, keyboard nav). No lorem ipsum: write real copy for the business.
 - **Security**: never hard-code secrets (use `.env` + `.env.example`), validate all input (zod/pydantic), parameterised queries/ORM, hash passwords (bcrypt/argon2), auth checks on every protected route, CORS & rate limits on public APIs, Row Level Security on Supabase.
 - **Errors**: loading, empty and error states in UI; try/catch with useful messages in backend.
-- **Tests**: at least smoke tests for core logic/endpoints (Vitest/Jest/pytest; Playwright for key flows when asked).
+- **Tests**: core logic + every endpoint + one E2E flow when there is a UI (`references/testing.md`).
+- **SEO & speed** for public sites: `references/seo-performance.md` (Lighthouse ≥ 90).
 - **Docs**: a `README.md` with features, stack, setup, env vars, scripts, deploy steps.
 - **Git**: `.gitignore`, logical commits if git is available.
 
@@ -56,5 +73,15 @@ Read the matching reference file before building.
 - Then files, each with its full path as a heading and the complete code.
 - End with: ▶ Run locally · 🔑 Env vars · 🚀 Deploy · ➕ Next ideas.
 
-## 6. Prompt library
+## 6. Specialist guides
+| Need | Read |
+|---|---|
+| Visual design, colors, typography, components, RTL | `references/design-system.md` |
+| Payments: Stripe, PayPal, JazzCash, Easypaisa, Razorpay, COD… | `references/payments.md` |
+| Feature lists for restaurants, clinics, schools, real estate, stores, gyms, salons, hotels, delivery, POS, NGOs, SaaS | `references/industries.md` |
+| Chatbots, content generation, summarizers, RAG with the Claude API | `references/ai-features.md` |
+| SEO, Core Web Vitals, Lighthouse | `references/seo-performance.md` |
+| Unit, API, E2E (Playwright), accessibility tests | `references/testing.md` |
+
+## 7. Prompt library
 `references/prompts.md` contains ready-made starter prompts for every product type. If the user's request is very vague ("make me an app"), offer 3–5 relevant options from it.

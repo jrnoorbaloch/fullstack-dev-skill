@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Live demos — Full-Stack Developer Skill for Claude</title>
+  <meta name="description" content="Projects built with the Full-Stack Developer skill for Claude." />
+  <style>
+    body{font-family:Inter,system-ui,sans-serif;margin:0;background:#0b1020;color:#e8ecff;line-height:1.6}
+    .wrap{max-width:960px;margin:0 auto;padding:56px 20px}
+    h1{font-size:clamp(1.8rem,4vw,2.6rem);margin:0}p{color:#93a0c8}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;margin-top:32px}
+    a.card{display:block;background:#121a33;border:1px solid #24305a;border-radius:16px;overflow:hidden;text-decoration:none;color:inherit;transition:transform .15s}
+    a.card:hover{transform:translateY(-3px)}a.card:focus-visible{outline:3px solid #7c8cff;outline-offset:3px}
+    a.card img{width:100%;display:block;aspect-ratio:16/10;object-fit:cover;object-position:top}
+    a.card div{padding:16px 18px}a.card h2{margin:0;font-size:1.1rem}
+    .repo{display:inline-block;margin-top:20px;color:#7c8cff}
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <h1>🚀 Live demos</h1>
+    <p>Each project was built from a single prompt with the Full-Stack Developer skill for Claude.</p>
+    <div class="grid">
+      <a class="card" href="ali-bakery/"><img src="screenshots/ali-bakery-desktop.png" alt="Ali Bakery website" /><div><h2>Ali Bakery</h2><p>Bilingual (English / Urdu RTL) bakery site with menu filters and WhatsApp ordering.</p></div></a>
+      <a class="card" href="expense-tracker/"><img src="screenshots/expense-tracker-desktop.png" alt="Spendly expense tracker" /><div><h2>Spendly</h2><p>Offline expense tracker with monthly summary, category chart, search and CSV export.</p></div></a>
+    </div>
+    <a class="repo" href="https://github.com/jrnoorbaloch/fullstack-dev-skill">← Back to the repository</a>
+  </main>
+</body>
+</html>

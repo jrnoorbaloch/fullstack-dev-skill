@@ -1,0 +1,3 @@
+# Runtime: Python standard library only (tkinter + sqlite3).
+pytest>=8.0
+pyinstaller>=6.0

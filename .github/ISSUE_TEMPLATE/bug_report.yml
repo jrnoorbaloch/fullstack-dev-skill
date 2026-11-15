@@ -1,0 +1,30 @@
+name: 🐞 Bug report
+description: The skill produced broken code, wrong output, or didn't trigger
+labels: [bug]
+body:
+  - type: textarea
+    id: prompt
+    attributes:
+      label: Prompt you used
+      description: Paste the exact prompt you sent to Claude.
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: What went wrong?
+      description: Error messages, wrong behaviour, screenshots.
+    validations:
+      required: true
+  - type: dropdown
+    id: where
+    attributes:
+      label: Where did you use the skill?
+      options: [Claude app (web / desktop / mobile), Claude Code, Other]
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Skill version
+      placeholder: v1.1.0

@@ -1,0 +1,67 @@
+name: Validate
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  skill:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Check skill structure
+        run: |
+          python - <<'PY'
+          import json, re, sys, pathlib
+          root = pathlib.Path("skills/fullstack-developer")
+          text = (root / "SKILL.md").read_text(encoding="utf-8")
+          m = re.match(r"^---\n(.*?)\n---\n", text, re.S)
+          assert m, "SKILL.md must start with YAML frontmatter"
+          fm = dict(line.split(":", 1) for line in m.group(1).splitlines() if ":" in line)
+          assert fm.get("name", "").strip() == "fullstack-developer", "name must be fullstack-developer"
+          desc = fm.get("description", "").strip()
+          assert 0 < len(desc) <= 1024, "description must be 1-1024 chars"
+          for ref in sorted(set(re.findall(r"`((?:references|templates|scripts)/[\w./-]+)`", text))):
+              assert (root / ref).exists(), f"SKILL.md references missing path: {ref}"
+          for f in (".claude-plugin/plugin.json", ".claude-plugin/marketplace.json"):
+              json.load(open(f))
+          for cmd in pathlib.Path("commands").glob("*.md"):
+              assert cmd.read_text(encoding="utf-8").startswith("---\ndescription:"), f"{cmd} needs a description"
+          a = pathlib.Path("PROMPTS.md").read_text(encoding="utf-8")
+          b = (root / "references/prompts.md").read_text(encoding="utf-8")
+          assert a == b, "PROMPTS.md must match references/prompts.md"
+          print("Skill structure OK")
+          PY
+      - name: Test scripts and Python templates
+        run: |
+          pip install -q pytest
+          python skills/fullstack-developer/scripts/scaffold.py --list
+          python skills/fullstack-developer/scripts/scaffold.py landing-page /tmp/site --set BRAND=Test
+          python skills/fullstack-developer/scripts/verify.py /tmp/site
+          python skills/fullstack-developer/scripts/verify.py skills/fullstack-developer/templates/python-desktop-pos --skip-install
+          python skills/fullstack-developer/scripts/verify.py skills/fullstack-developer/templates/fastapi-api
+
+  nextjs-template:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: skills/fullstack-developer/templates/nextjs-saas
+    env:
+      NEXT_PUBLIC_SUPABASE_URL: https://example.supabase.co
+      NEXT_PUBLIC_SUPABASE_ANON_KEY: ci-placeholder
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm install --no-audit --no-fund
+      - run: npm run lint
+      - run: npm test
+      - run: npm run build
