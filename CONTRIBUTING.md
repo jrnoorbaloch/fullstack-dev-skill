@@ -26,5 +26,5 @@ The **Validate** GitHub Action also checks the skill structure on every pull req
 
 ## Releasing (maintainers)
 1. Update `CHANGELOG.md` and the `version` in `.claude-plugin/plugin.json`.
-2. Tag and push: `git tag v1.2.0 && git push origin v1.2.0`.
-3. The **Release** workflow builds `fullstack-developer.zip` and publishes the GitHub Release automatically.
+2. Publish a GitHub Release with a new tag (e.g. `v1.2.0`), or push the tag: `git tag v1.2.0 && git push origin v1.2.0`.
+3. The **Release** workflow builds `fullstack-developer.zip` and attaches it to the release automatically.
