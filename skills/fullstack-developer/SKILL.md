@@ -57,4 +57,4 @@ Read the matching reference file before building.
 - End with: ▶ Run locally · 🔑 Env vars · 🚀 Deploy · ➕ Next ideas.
 
 ## 6. Prompt library
-`references/prompts.md` contains ready-made starter prompts for every product type. If the user's request is very vague ("ek app bana do"), offer 3–5 relevant options from it.
+`references/prompts.md` contains ready-made starter prompts for every product type. If the user's request is very vague ("make me an app"), offer 3–5 relevant options from it.

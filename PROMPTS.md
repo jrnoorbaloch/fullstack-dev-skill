@@ -1,121 +1,120 @@
-# Prompt Library / Prompts ki Library
+# Prompt Library
 
-Copy karein, `[ ]` wali jagah apni detail likhein, aur Claude ko bhej dein.
-Copy, fill the `[ ]` parts, send to Claude. Works in any language — write in Urdu, Hindi, Arabic, Spanish… Claude will reply in the same language.
+Copy a prompt, fill in the `[ ]` parts, and send it to Claude.
+You can write in any language (English, Urdu, Hindi, Arabic, Spanish, etc.). Claude replies in the same language.
 
 ---
 
 ## 🌐 1. Websites
 
 **Landing page**
-> Mere [business/product: ___] ke liye ek modern landing page banao. Sections: hero, features, pricing, testimonials, FAQ, contact form. Colors: [___]. Mobile responsive ho.
-> Build a modern landing page for [___] with hero, features, pricing, testimonials, FAQ and contact form. Brand colors: [___].
+> Build a modern landing page for [business/product: ___] with hero, features, pricing, testimonials, FAQ and a contact form. Brand colors: [___]. Fully mobile responsive.
 
 **Portfolio**
-> Mera personal portfolio website banao. Naam: [___], kaam: [___]. Projects gallery, about, skills, resume download, contact form. Dark mode bhi ho.
+> Build my personal portfolio website. Name: [___], profession: [___]. Include a projects gallery, about section, skills, resume download, contact form and dark mode.
 
 **Business / company website**
-> [Restaurant/clinic/school/shop: ___] ke liye 5-page website banao: Home, About, Services, Gallery, Contact (Google Map + WhatsApp button). Urdu aur English dono languages.
+> Build a 5-page website for my [restaurant/clinic/school/shop: ___]: Home, About, Services, Gallery, Contact (with Google Map and a WhatsApp button). Support [English + ___] languages.
 
 **Blog**
-> Astro ya Next.js mein ek blog banao: Markdown posts, categories, search, SEO, RSS feed.
+> Build a blog with Astro or Next.js: Markdown posts, categories, search, SEO and an RSS feed.
 
 ---
 
 ## 🧩 2. Web Apps / SaaS
 
 **SaaS starter**
-> Ek SaaS app banao [idea: ___] ke liye. Login/signup, user dashboard, Stripe subscription (free + pro plan), admin panel, settings page. Next.js + Supabase.
+> Build a SaaS app for [idea: ___]. Include login/signup, user dashboard, Stripe subscriptions (free + pro plan), admin panel and settings page. Use Next.js + Supabase.
 
 **E-commerce store**
-> Ek online store banao: products, categories, search, cart, checkout, order tracking, admin panel (products/orders manage). Payment: [Stripe/JazzCash/Easypaisa/COD].
+> Build an online store with products, categories, search, cart, checkout, order tracking and an admin panel to manage products and orders. Payments: [Stripe / PayPal / local gateway / Cash on Delivery].
 
 **Dashboard / admin panel**
-> [Data: sales/students/inventory] ke liye admin dashboard banao: KPI cards, charts, table (search, filter, pagination), CSV export, roles (admin/staff).
+> Build an admin dashboard for [sales/students/inventory] data: KPI cards, charts, a table with search, filters and pagination, CSV export, and roles (admin/staff).
 
 **CRUD app**
-> Ek [todo/notes/expense tracker/inventory] app banao jisme login ho, data database mein save ho, aur edit/delete/search ho sake.
+> Build a [todo / notes / expense tracker / inventory] app with login, database storage, and create/edit/delete/search.
 
 **Booking system**
-> [Salon/doctor/hotel] ke liye appointment booking system: calendar, time slots, email/WhatsApp confirmation, admin approval.
+> Build an appointment booking system for a [salon/doctor/hotel]: calendar, time slots, email/WhatsApp confirmation and admin approval.
 
 **School / LMS**
-> Ek LMS banao: courses, video lessons, quizzes, student progress, teacher panel, certificates.
+> Build an LMS with courses, video lessons, quizzes, student progress tracking, a teacher panel and certificates.
 
 **Chat / realtime**
-> Realtime chat app banao: one-to-one aur group chat, online status, file sharing. Supabase Realtime use karo.
+> Build a realtime chat app with one-to-one and group chat, online status and file sharing, using Supabase Realtime.
 
 **AI app**
-> Ek AI [chatbot/content writer/summarizer] web app banao jo Claude API use kare. Chat history save ho, streaming responses hon.
+> Build an AI [chatbot / content writer / summarizer] web app using the Claude API, with saved chat history and streaming responses.
 
 ---
 
 ## ⚙️ 3. Backend / API
 
-> [Project] ke liye REST API banao [Node/FastAPI/Laravel] mein: auth (JWT), [resources: ___] ke CRUD endpoints, validation, PostgreSQL, Swagger docs, tests.
+> Build a REST API for [project] in [Node / FastAPI / Laravel]: JWT auth, CRUD endpoints for [resources: ___], input validation, PostgreSQL, Swagger docs and tests.
 
-> Is database schema ko design karo: [describe]. Prisma schema + migrations + seed data do.
+> Design a database schema for [describe your app]. Give me the Prisma schema, migrations and seed data.
 
 ---
 
 ## 📱 4. Mobile Apps
 
 **General app**
-> React Native Expo mein ek [___] mobile app banao. Screens: [splash, login, home, detail, profile, settings]. Bottom tabs, dark mode, Supabase backend. APK build karne ka tareeqa bhi batao.
+> Build a [___] mobile app with React Native + Expo. Screens: [splash, login, home, detail, profile, settings]. Bottom tabs, dark mode, Supabase backend. Also explain how to build the APK.
 
 **Delivery / ride app**
-> Food delivery app banao: customer app (menu, cart, order, live tracking), rider view, restaurant admin web panel.
+> Build a food delivery app: customer app (menu, cart, order, live tracking), rider view, and a restaurant admin web panel.
 
 **Fitness / habit**
-> Habit tracker app banao: daily habits, streaks, reminders (notifications), progress charts, offline kaam kare.
+> Build a habit tracker app with daily habits, streaks, reminder notifications, progress charts and offline support.
 
 **Flutter**
-> Flutter mein [___] app banao, Riverpod state management, Firebase/Supabase backend.
+> Build a [___] app in Flutter with Riverpod state management and a Firebase/Supabase backend.
 
 ---
 
 ## 🖥️ 5. Desktop Software
 
 **POS / billing**
-> Windows ke liye POS (point of sale) software banao: products, barcode scan, billing, receipt print, daily sales report, stock alert, offline SQLite database. Installer (.exe) bhi banao.
+> Build POS (point of sale) software for Windows: products, barcode scanning, billing, receipt printing, daily sales reports, low-stock alerts and an offline SQLite database. Also create an .exe installer.
 
 **Inventory / accounts**
-> Shop ke liye inventory + accounts desktop software banao: purchase, sale, customers, suppliers, ledger, reports (PDF/Excel export).
+> Build inventory and accounting desktop software for a shop: purchases, sales, customers, suppliers, ledger and reports (PDF/Excel export).
 
 **Utility tool**
-> Python mein desktop tool banao jo [files rename/PDF merge/images compress] kare, simple GUI ke saath, aur .exe bana do.
+> Build a Python desktop tool with a simple GUI that [renames files / merges PDFs / compresses images], and package it as an .exe.
 
 ---
 
 ## 🛠️ 6. Scripts / Automation / CLI
 
-> Python script likho jo [website se data scrape kare / Excel files merge kare / emails bheje] aur result CSV mein save kare.
+> Write a Python script that [scrapes data from a website / merges Excel files / sends emails] and saves the result to CSV.
 
-> Ek CLI tool banao [Node/Python] mein jo [___] kare, help command aur colored output ke saath.
+> Build a CLI tool in [Node/Python] that [___], with a help command and colored output.
 
 ---
 
-## 🐞 7. Fix / Improve existing code
+## 🐞 7. Fix / Improve Existing Code
 
-> Ye mera code hai [paste / upload]. Error aa raha hai: [error]. Root cause dhoondo aur fix karo.
-> Is project mein [feature] add karo, existing style follow karte hue.
-> Is code ko review karo: bugs, security issues, performance — aur fixes do.
-> Is website ka design modern aur mobile-friendly bana do.
-> Is project ko [PHP → Next.js / JS → TypeScript] mein convert karo.
+> Here is my code [paste / upload]. I'm getting this error: [error]. Find the root cause and fix it.
+> Add [feature] to this project, following its existing style.
+> Review this code for bugs, security issues and performance, and give me the fixes.
+> Make this website's design modern and mobile-friendly.
+> Convert this project from [PHP → Next.js / JavaScript → TypeScript].
 
 ---
 
 ## 🚀 8. Deploy
 
-> Is project ko Vercel/Netlify par deploy karne ke step-by-step instructions do, custom domain ke saath.
-> Is app ke liye Dockerfile, docker-compose aur GitHub Actions CI banao.
-> Mera Expo app Play Store par publish karne ka poora process batao.
+> Give me step-by-step instructions to deploy this project on Vercel/Netlify with a custom domain.
+> Create a Dockerfile, docker-compose file and GitHub Actions CI for this app.
+> Walk me through publishing my Expo app on the Google Play Store.
 
 ---
 
-## 💡 Pro tips (behtar result ke liye)
-1. **Kya** banana hai + **kis ke liye** + **zaroori features** likhein.
-2. Pasand ki language/framework ho to naam likhein (warna Claude best default choose karega).
-3. Design ka reference dein: "Apple jaisa clean", "dark, neon", "colorful for kids".
-4. Bara project ho to steps mein: "Pehle plan do", phir "ab backend banao", phir "ab UI".
-5. Error aaye to poora error message paste karein.
+## 💡 Tips for Better Results
+1. Say **what** you want, **who** it's for, and the **must-have features**.
+2. Name your preferred language/framework if you have one; otherwise Claude picks a solid default.
+3. Give a design reference: "clean like Apple", "dark and neon", "colorful for kids".
+4. For big projects, go step by step: "Give me the plan first", then "Now build the backend", then "Now the UI".
+5. If you get an error, paste the full error message.
