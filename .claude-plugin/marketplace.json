@@ -1,0 +1,11 @@
+{
+  "name": "fullstack-dev-skill",
+  "owner": { "name": "YOUR-NAME" },
+  "plugins": [
+    {
+      "name": "fullstack-developer",
+      "source": "./",
+      "description": "Build websites, web apps, APIs, mobile apps and desktop software from a simple prompt in any language."
+    }
+  ]
+}

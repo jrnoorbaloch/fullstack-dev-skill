@@ -1,0 +1,8 @@
+{
+  "name": "fullstack-developer",
+  "description": "Full-stack developer skill: build websites, web apps, APIs, mobile apps and desktop software from a simple prompt in any language.",
+  "version": "1.0.0",
+  "author": { "name": "YOUR-NAME" },
+  "license": "MIT",
+  "keywords": ["fullstack", "web", "mobile", "desktop", "nextjs", "react-native", "api"]
+}
