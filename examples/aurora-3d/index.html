@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Aurora — Sound you can see</title>
+  <meta name="description" content="Aurora wireless speaker: 360° spatial sound, 30-hour battery, light that dances with your music." />
+  <meta name="theme-color" content="#06070d" />
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/SplitText.min.js"></script>
+  <script type="importmap">{ "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.187.0/build/three.module.js" } }</script>
+  <style>
+    :root{--bg:#06070d;--surface:#0e1120;--text:#eef0ff;--muted:#9aa0c3;--a:#8b5cf6;--b:#22d3ee;--c:#f472b6;--border:#1d2240}
+    *{box-sizing:border-box;margin:0}
+    html{background:var(--bg)}
+    body{font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--text);line-height:1.55;overflow-x:hidden}
+    a{color:inherit}
+    .container{max-width:1200px;margin-inline:auto;padding-inline:24px}
+    header{position:fixed;inset:0 0 auto;z-index:20;transition:background .3s}
+    header.scrolled{background:rgb(6 7 13 / .7);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+    nav{display:flex;align-items:center;justify-content:space-between;height:72px}
+    .logo{font-weight:800;letter-spacing:.18em;font-size:1.05rem;text-decoration:none}
+    .logo span{background:linear-gradient(90deg,var(--a),var(--b));-webkit-background-clip:text;background-clip:text;color:transparent}
+    .nav-links{display:flex;gap:28px;list-style:none;padding:0;font-size:.95rem;color:var(--muted)}
+    .nav-links a{text-decoration:none}.nav-links a:hover{color:var(--text)}
+    .btn{display:inline-flex;align-items:center;gap:10px;border-radius:999px;padding:14px 26px;font-weight:600;text-decoration:none;border:1px solid transparent;cursor:pointer;font:inherit;will-change:transform}
+    .btn-primary{background:linear-gradient(90deg,var(--a),var(--b));color:#05060b}
+    .btn-ghost{border-color:var(--border);color:var(--text);background:rgb(255 255 255 / .03)}
+    :focus-visible{outline:2px solid var(--b);outline-offset:3px}
+    /* hero */
+    .hero{position:relative;min-height:100dvh;display:grid;align-items:center;overflow:hidden}
+    #scene{position:absolute;inset:0;width:100%;height:100%;display:block}
+    .hero-glow{position:absolute;inset:0;background:radial-gradient(50% 50% at 70% 45%,rgb(139 92 246 / .25),transparent 70%),radial-gradient(35% 35% at 20% 80%,rgb(34 211 238 / .12),transparent 70%);pointer-events:none}
+    .hero-copy{position:relative;z-index:2;max-width:620px;padding-top:72px}
+    .kicker{display:inline-flex;gap:8px;align-items:center;font-size:.85rem;color:var(--muted);border:1px solid var(--border);border-radius:999px;padding:6px 14px;background:rgb(255 255 255 / .03)}
+    .kicker i{width:8px;height:8px;border-radius:50%;background:var(--b);box-shadow:0 0 12px var(--b)}
+    h1{font-size:clamp(3rem,8vw,6.6rem);line-height:.98;letter-spacing:-.045em;margin:22px 0 18px}
+    h1 .grad,h1 .grad *{background:linear-gradient(90deg,var(--a),var(--b) 60%,var(--c));-webkit-background-clip:text;background-clip:text;color:transparent}
+    h1 .grad *{padding-right:.04em}
+    .hero p{color:var(--muted);font-size:1.2rem;max-width:44ch}
+    .cta{display:flex;gap:12px;margin-top:32px;flex-wrap:wrap}
+    .scroll-hint{position:absolute;bottom:28px;left:50%;translate:-50% 0;color:var(--muted);font-size:.8rem;letter-spacing:.2em;text-transform:uppercase;z-index:2}
+    /* marquee */
+    .marquee{border-block:1px solid var(--border);overflow:hidden;padding:18px 0;background:var(--surface)}
+    .marquee-inner{display:flex;gap:56px;width:max-content;font-weight:700;font-size:1.1rem;color:var(--muted);white-space:nowrap}
+    .marquee-inner span{display:inline-flex;gap:56px}
+    .marquee-inner b{color:var(--text)}
+    /* story (pinned) */
+    .story{position:relative;min-height:100dvh;padding-block:80px;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:40px}
+    .story-visual{aspect-ratio:1;max-width:480px;width:100%;justify-self:center;border-radius:32px;position:relative;overflow:hidden;background:var(--surface);border:1px solid var(--border)}
+    .ring{position:absolute;inset:12%;border-radius:50%;border:2px solid rgb(139 92 246 / .5);box-shadow:0 0 60px rgb(139 92 246 / .35),inset 0 0 60px rgb(34 211 238 / .2)}
+    .ring.r2{inset:24%;border-color:rgb(34 211 238 / .55)}
+    .ring.r3{inset:36%;border-color:rgb(244 114 182 / .55)}
+    .core{position:absolute;inset:44%;border-radius:50%;background:radial-gradient(circle,#fff,var(--b) 40%,var(--a) 80%);filter:blur(1px);box-shadow:0 0 80px var(--b)}
+    .steps{position:relative;display:grid;gap:48px}
+    .steps.pinned{min-height:320px;display:block}
+    .step{display:flex;flex-direction:column;justify-content:center;gap:16px}
+    .steps.pinned .step{position:absolute;inset:0}
+    .step .num{font:600 .85rem/1 ui-monospace,monospace;color:var(--b);letter-spacing:.2em}
+    .step h2{font-size:clamp(2rem,4.4vw,3.6rem);line-height:1.05;letter-spacing:-.03em}
+    .step p{color:var(--muted);font-size:1.15rem;max-width:40ch}
+    /* specs */
+    section.block{padding:120px 0}
+    .section-title{font-size:clamp(2rem,4.4vw,3.4rem);letter-spacing:-.03em;line-height:1.05;max-width:18ch}
+    .specs{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:48px}
+    .spec{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:28px}
+    .spec b{display:block;font-size:clamp(2.2rem,4vw,3.2rem);letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+    .spec span{color:var(--muted)}
+    /* colors */
+    .swatches{display:flex;gap:14px;margin-top:28px}
+    .swatch{width:52px;height:52px;border-radius:50%;border:2px solid var(--border);cursor:pointer}
+    .swatch[aria-pressed=true]{border-color:#fff;box-shadow:0 0 0 4px rgb(255 255 255 / .12)}
+    .colors{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+    .color-name{font-size:1.4rem;font-weight:700;margin-top:20px}
+    /* final cta */
+    .final{text-align:center;padding:140px 0;position:relative;overflow:hidden}
+    .final h2{font-size:clamp(2.6rem,7vw,5.6rem);letter-spacing:-.04em;line-height:1}
+    .final p{color:var(--muted);margin:18px auto 34px;max-width:40ch;font-size:1.15rem}
+    .price{font-size:1rem;color:var(--muted);margin-top:14px}
+    footer{border-top:1px solid var(--border);padding:28px 0;color:var(--muted);font-size:.9rem;text-align:center}
+    @media (max-width:900px){#scene{opacity:.55}.nav-links{display:none}.story{grid-template-columns:1fr;height:auto;padding:100px 0;gap:24px}.specs{grid-template-columns:1fr 1fr}.colors{grid-template-columns:1fr}}
+    @media (prefers-reduced-motion:reduce){.scroll-hint{display:none}}
+  </style>
+</head>
+<body>
+  <header id="header">
+    <nav class="container" aria-label="Main">
+      <a href="#" class="logo"><span>AURORA</span></a>
+      <ul class="nav-links">
+        <li><a href="#story">Sound</a></li>
+        <li><a href="#specs">Specs</a></li>
+        <li><a href="#colors">Colors</a></li>
+      </ul>
+      <a href="#buy" class="btn btn-primary magnetic" style="padding:10px 20px">Pre-order</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="heroTitle">
+      <canvas id="scene" aria-hidden="true"></canvas>
+      <div class="hero-glow"></div>
+      <div class="container">
+        <div class="hero-copy">
+          <span class="kicker hero-anim"><i></i> New · Ships in December</span>
+          <h1 id="heroTitle" class="split">Sound you can <span class="grad">see.</span></h1>
+          <p class="hero-anim">Aurora is a 360° wireless speaker whose light breathes with every beat. Spatial audio, 30-hour battery, made to be seen.</p>
+          <div class="cta hero-anim">
+            <a href="#buy" class="btn btn-primary magnetic">Pre-order — $249</a>
+            <a href="#story" class="btn btn-ghost">Explore ↓</a>
+          </div>
+        </div>
+      </div>
+      <div class="scroll-hint">Scroll</div>
+    </section>
+
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-inner">
+        <span><b>360° spatial audio</b> · 30-hour battery · IP67 waterproof · <b>Reactive light</b> · Multi-room · USB-C fast charge ·</span>
+        <span><b>360° spatial audio</b> · 30-hour battery · IP67 waterproof · <b>Reactive light</b> · Multi-room · USB-C fast charge ·</span>
+      </div>
+    </div>
+
+    <section id="story" class="container story" aria-label="How Aurora sounds">
+      <div class="story-visual" aria-hidden="true">
+        <div class="ring"></div><div class="ring r2"></div><div class="ring r3"></div><div class="core"></div>
+      </div>
+      <div class="steps">
+        <article class="step"><span class="num">01 / SPACE</span><h2>Fills the room. From the center.</h2><p>Six drivers fire in every direction, so the sweet spot is wherever you are.</p></article>
+        <article class="step"><span class="num">02 / LIGHT</span><h2>Light that follows the music.</h2><p>The aurora ring reads tempo and bass in real time and turns them into color.</p></article>
+        <article class="step"><span class="num">03 / ENERGY</span><h2>30 hours. One charge.</h2><p>Play from Friday night to Sunday morning. Ten minutes of USB-C gives you three hours.</p></article>
+      </div>
+    </section>
+
+    <section id="specs" class="block" aria-labelledby="specsTitle">
+      <div class="container">
+        <h2 id="specsTitle" class="section-title reveal">Small speaker. Serious numbers.</h2>
+        <div class="specs">
+          <div class="spec reveal"><b data-count="360" data-suffix="°">360°</b><span>spatial sound field</span></div>
+          <div class="spec reveal"><b data-count="30" data-suffix="h">30h</b><span>battery life</span></div>
+          <div class="spec reveal"><b data-count="16" data-suffix="M">16M</b><span>light colors</span></div>
+          <div class="spec reveal"><b data-count="67" data-prefix="IP">IP67</b><span>dust &amp; waterproof</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="colors" class="block" aria-labelledby="colorsTitle" style="padding-top:0">
+      <div class="container colors">
+        <div>
+          <h2 id="colorsTitle" class="section-title reveal">Pick your glow.</h2>
+          <div class="swatches reveal" role="group" aria-label="Color">
+            <button class="swatch" aria-pressed="true" data-name="Nebula Violet" data-color="#8b5cf6" style="background:#8b5cf6" aria-label="Nebula Violet"></button>
+            <button class="swatch" aria-pressed="false" data-name="Glacier Cyan" data-color="#22d3ee" style="background:#22d3ee" aria-label="Glacier Cyan"></button>
+            <button class="swatch" aria-pressed="false" data-name="Solar Pink" data-color="#f472b6" style="background:#f472b6" aria-label="Solar Pink"></button>
+            <button class="swatch" aria-pressed="false" data-name="Ember Gold" data-color="#f59e0b" style="background:#f59e0b" aria-label="Ember Gold"></button>
+          </div>
+          <p class="color-name reveal" id="colorName" aria-live="polite">Nebula Violet</p>
+        </div>
+        <p class="reveal" style="color:var(--muted);font-size:1.15rem;max-width:40ch">The 3D model in the hero changes color too — scroll back up and look. Every finish is anodized aluminium with a matte glass top.</p>
+      </div>
+    </section>
+
+    <section id="buy" class="final" aria-labelledby="buyTitle">
+      <div class="container">
+        <h2 id="buyTitle" class="split">Hear it. See it. Own it.</h2>
+        <p class="reveal">Pre-order today and get free shipping plus a 2-year warranty.</p>
+        <a href="#buy" class="btn btn-primary magnetic reveal">Pre-order — $249</a>
+        <p class="price reveal">Fictional product · demo built with the Full-Stack Developer skill for Claude</p>
+      </div>
+    </section>
+  </main>
+
+  <footer><div class="container">© <span id="year"></span> Aurora Audio (demo) · GSAP + Three.js</div></footer>
+
+  <script type="module">
+    import * as THREE from "three";
+
+    const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    /* ---------- Three.js hero object ---------- */
+    const canvas = document.getElementById("scene");
+    const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+    renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+    renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(40, 1, 0.1, 100);
+    camera.position.set(0, 0, 7.5);
+
+    const group = new THREE.Group();
+    scene.add(group);
+    const material = new THREE.MeshPhysicalMaterial({ color: 0x8b5cf6, metalness: 0.35, roughness: 0.18, clearcoat: 1, clearcoatRoughness: 0.1, iridescence: 0.6, emissive: 0x1a0b3a });
+    const body = new THREE.Mesh(new THREE.TorusKnotGeometry(1.15, 0.38, 260, 36, 2, 3), material);
+    group.add(body);
+    const ringMat = new THREE.MeshBasicMaterial({ color: 0x22d3ee, transparent: true, opacity: 0.55 });
+    const ring = new THREE.Mesh(new THREE.TorusGeometry(2.1, 0.012, 16, 200), ringMat);
+    ring.rotation.x = Math.PI / 2.3;
+    group.add(ring);
+
+    // particles
+    const count = 900, pos = new Float32Array(count * 3);
+    for (let i = 0; i < count; i++) {
+      const r = 3 + Math.random() * 4, t = Math.random() * Math.PI * 2, p = Math.acos(2 * Math.random() - 1);
+      pos.set([r * Math.sin(p) * Math.cos(t), r * Math.sin(p) * Math.sin(t), r * Math.cos(p)], i * 3);
+    }
+    const pGeo = new THREE.BufferGeometry(); pGeo.setAttribute("position", new THREE.BufferAttribute(pos, 3));
+    const particles = new THREE.Points(pGeo, new THREE.PointsMaterial({ color: 0x9aa0ff, size: 0.025, transparent: true, opacity: 0.8 }));
+    scene.add(particles);
+
+    scene.add(new THREE.AmbientLight(0xffffff, 0.35));
+    const l1 = new THREE.PointLight(0x22d3ee, 60, 30); l1.position.set(4, 3, 4); scene.add(l1);
+    const l2 = new THREE.PointLight(0xf472b6, 50, 30); l2.position.set(-4, -2, 3); scene.add(l2);
+    const l3 = new THREE.DirectionalLight(0xffffff, 1.5); l3.position.set(0, 5, 5); scene.add(l3);
+
+    function layout() {
+      const w = canvas.clientWidth, h = canvas.clientHeight;
+      renderer.setSize(w, h, false);
+      camera.aspect = w / h; camera.updateProjectionMatrix();
+      group.position.x = w > 900 ? 2.75 : 0;
+      group.position.y = w > 900 ? 0 : 2.3;
+      group.scale.setScalar(w > 900 ? 1 : 0.55);
+    }
+    addEventListener("resize", layout); layout();
+
+    const pointer = { x: 0, y: 0 };
+    addEventListener("pointermove", (e) => { pointer.x = e.clientX / innerWidth - 0.5; pointer.y = e.clientY / innerHeight - 0.5; });
+
+    let visible = true;
+    new IntersectionObserver(([e]) => (visible = e.isIntersecting)).observe(canvas);
+    const clock = new THREE.Clock();
+    renderer.setAnimationLoop(() => {
+      if (!visible) return;
+      const t = clock.getElapsedTime();
+      if (!reduce) {
+        body.rotation.y = t * 0.25; body.rotation.x = Math.sin(t * 0.3) * 0.2;
+        ring.rotation.z = t * 0.15; particles.rotation.y = t * 0.02;
+        group.rotation.y += (pointer.x * 0.6 - group.rotation.y) * 0.05;
+        group.rotation.x += (pointer.y * 0.4 - group.rotation.x) * 0.05;
+      }
+      renderer.render(scene, camera);
+    });
+
+    /* ---------- GSAP ---------- */
+    const { gsap, ScrollTrigger, SplitText } = window;
+    if (!gsap) { document.documentElement.classList.add("no-gsap"); }
+    else {
+      gsap.registerPlugin(ScrollTrigger, SplitText);
+      const header = document.getElementById("header");
+      ScrollTrigger.create({ start: 80, onToggle: (s) => header.classList.toggle("scrolled", s.isActive) });
+
+      // color swatches → 3D material + glow
+      document.querySelectorAll(".swatch").forEach((b) => b.addEventListener("click", () => {
+        document.querySelectorAll(".swatch").forEach((s) => s.setAttribute("aria-pressed", String(s === b)));
+        document.getElementById("colorName").textContent = b.dataset.name;
+        const c = new THREE.Color(b.dataset.color);
+        gsap.to(material.color, { r: c.r, g: c.g, b: c.b, duration: reduce ? 0 : 0.8, ease: "power2.out" });
+      }));
+
+      const mm = gsap.matchMedia();
+      mm.add({ full: "(prefers-reduced-motion: no-preference)", desktop: "(min-width: 901px)" }, (ctx) => {
+        const { full, desktop } = ctx.conditions;
+        if (!full) return;
+
+        // hero intro
+        SplitText.create("#heroTitle", { type: "words,lines", mask: "lines", autoSplit: true, onSplit: (self) =>
+          gsap.from(self.words, { yPercent: 110, duration: 1, stagger: 0.06, ease: "expo.out", delay: 0.15 }) });
+        gsap.from(".hero-anim", { y: 24, autoAlpha: 0, duration: 0.9, stagger: 0.12, ease: "power3.out", delay: 0.35 });
+        gsap.from(group.scale, { x: 0.01, y: 0.01, z: 0.01, duration: 1.6, ease: "elastic.out(1, 0.6)", delay: 0.2 });
+
+        // hero object reacts to scroll
+        gsap.to(group.rotation, { z: Math.PI * 0.6, ease: "none", scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom top", scrub: 1 } });
+        gsap.to(camera.position, { z: 11, ease: "none", scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom top", scrub: 1 } });
+        gsap.to(".scroll-hint", { y: 10, repeat: -1, yoyo: true, duration: 0.9, ease: "sine.inOut" });
+
+        // marquee
+        gsap.to(".marquee-inner", { xPercent: -50, repeat: -1, duration: 28, ease: "none" });
+
+        // pinned story
+        if (desktop) {
+          const steps = gsap.utils.toArray(".step");
+          document.querySelector(".steps").classList.add("pinned");
+          gsap.set(steps.slice(1), { autoAlpha: 0, y: 40 });
+          const tl = gsap.timeline({ scrollTrigger: { trigger: "#story", start: "top top", end: "+=2200", scrub: 1, pin: true, anticipatePin: 1 } });
+          tl.to(".ring", { rotate: 180, scale: 1.08, stagger: 0.1, duration: 3, ease: "none" }, 0)
+            .to(".core", { scale: 1.6, duration: 3, ease: "none" }, 0);
+          steps.forEach((s, i) => {
+            if (i === 0) return;
+            tl.to(steps[i - 1], { autoAlpha: 0, y: -40, duration: 0.5 }, i)
+              .to(s, { autoAlpha: 1, y: 0, duration: 0.5 }, i + 0.2);
+          });
+        }
+
+        // reveals + counters
+        ScrollTrigger.batch(".reveal", { start: "top 85%", onEnter: (els) => gsap.from(els, { y: 40, autoAlpha: 0, stagger: 0.1, duration: 0.8, ease: "power3.out", overwrite: true }) });
+        document.querySelectorAll("[data-count]").forEach((el) => {
+          const end = +el.dataset.count, pre = el.dataset.prefix || "", suf = el.dataset.suffix || "", o = { v: 0 };
+          gsap.to(o, { v: end, duration: 1.6, ease: "power2.out", scrollTrigger: { trigger: el, start: "top 90%" },
+            onUpdate: () => (el.textContent = pre + Math.round(o.v) + suf) });
+        });
+        SplitText.create(".final .split", { type: "words", onSplit: (self) =>
+          gsap.from(self.words, { y: 60, autoAlpha: 0, stagger: 0.08, duration: 0.9, ease: "expo.out", scrollTrigger: { trigger: ".final", start: "top 70%" } }) });
+
+        // magnetic buttons
+        document.querySelectorAll(".magnetic").forEach((btn) => {
+          const xTo = gsap.quickTo(btn, "x", { duration: 0.4, ease: "power3" }), yTo = gsap.quickTo(btn, "y", { duration: 0.4, ease: "power3" });
+          btn.addEventListener("pointermove", (e) => { const r = btn.getBoundingClientRect(); xTo((e.clientX - r.left - r.width / 2) * 0.3); yTo((e.clientY - r.top - r.height / 2) * 0.3); });
+          btn.addEventListener("pointerleave", () => { xTo(0); yTo(0); });
+        });
+        return () => document.querySelector(".steps").classList.remove("pinned");
+      });
+    }
+  </script>
+</body>
+</html>

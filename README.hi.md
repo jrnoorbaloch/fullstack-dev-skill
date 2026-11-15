@@ -15,11 +15,12 @@ Claude को सिर्फ़ एक प्रॉम्प्ट दें �
 - 🚀 **डिप्लॉय:** Vercel, Netlify, Supabase, Docker, GitHub Actions
 
 ## 📦 इसमें क्या है
-- **5 टेस्टेड टेम्पलेट:** लैंडिंग पेज, Next.js + Supabase SaaS, Expo मोबाइल ऐप, FastAPI, Python POS
+- **9 टेस्टेड टेम्पलेट:** लैंडिंग पेज, Next.js + Supabase SaaS, Expo मोबाइल ऐप, FastAPI, Python POS, React + shadcn + GSAP, एनिमेटेड स्लाइड्स, WordPress थीम, Remotion वीडियो
+- **✨ वर्ज़न 2:** GSAP एनिमेशन, Three.js 3D, WordPress ब्लॉक थीम, HTML प्रेज़ेंटेशन, Remotion वीडियो
 - **3 स्क्रिप्ट:** प्रोजेक्ट बनाना, टेस्ट/बिल्ड चेक करना, `.env.example` बनाना
-- **8 स्लैश कमांड** (Claude Code): `/new-website` `/new-webapp` `/new-mobile` `/new-desktop` `/new-api` `/fix-bug` `/review` `/deploy`
-- **11 गाइड:** डिज़ाइन, पेमेंट (Stripe, PayPal, Razorpay, COD…), इंडस्ट्री फ़ीचर्स, AI, SEO, टेस्टिंग
-- **40+ तैयार प्रॉम्प्ट:** [PROMPTS.md](PROMPTS.md)
+- **14 स्लैश कमांड** (Claude Code): `/new-website` `/new-webapp` `/new-mobile` `/new-desktop` `/new-api` `/new-animated-site` `/new-3d` `/new-artifact` `/new-slides` `/new-video` `/new-wordpress` `/fix-bug` `/review` `/deploy`
+- **20 गाइड:** डिज़ाइन, पेमेंट (Stripe, PayPal, Razorpay, COD…), इंडस्ट्री फ़ीचर्स, AI, SEO, टेस्टिंग
+- **60+ तैयार प्रॉम्प्ट:** [PROMPTS.md](PROMPTS.md)
 
 ## 📥 इंस्टॉल कैसे करें
 

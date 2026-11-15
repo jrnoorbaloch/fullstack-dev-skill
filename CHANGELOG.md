@@ -2,6 +2,25 @@
 
 All notable changes to this project are documented here. Versions follow [Semantic Versioning](https://semver.org/).
 
+## [2.0.0] — 2026-11-15
+### Added
+- **GSAP animation** guide (`animation-gsap.md`): timelines, ScrollTrigger (pinning, scrubbing, horizontal scroll, batch), SplitText, Flip, Draggable, SVG plugins, `useGSAP` for React, `gsap.matchMedia()` reduced-motion pattern, performance rules and ready-made recipes.
+- **Three.js / React Three Fiber** guide (`threejs.md`): scene skeletons, glTF pipeline, interaction, performance budget, fallbacks.
+- **React patterns** guide (`react-patterns.md`): best practices (waterfalls, bundle size, rendering, state), composition patterns (compound components, slots, `asChild`, headless hooks), View Transitions.
+- **Tailwind design system** guide (`tailwind-system.md`): v4 `@theme` tokens, semantic colors, `cva` + `cn`, component layers.
+- **UI constraints** guide (`ui-constraints.md`): hard rules for layout, typography, color, interaction, motion, content and accessibility.
+- **Artifacts** (`artifacts.md`), **Slides** (`slides.md`), **Remotion** (`remotion.md`) and **WordPress** (`wordpress.md`) guides.
+- **Templates**: `react-vite-shadcn` (React 19 + Vite + Tailwind v4 + shadcn-style UI + GSAP → single-file build), `html-slides` (animated GSAP deck), `wordpress-block-theme` (block theme + dynamic Testimonial block plugin), `remotion-video` (promo in 16:9 and 9:16).
+- **Slash commands**: `/new-animated-site`, `/new-3d`, `/new-artifact`, `/new-slides`, `/new-video`, `/new-wordpress`.
+- **Examples**: *Aurora* 3D product landing page (Three.js + GSAP) and an animated *pitch deck*.
+- 6 new prompt-library sections (animated sites, 3D, artifacts, presentations, videos, WordPress).
+- Credits section linking the skills that inspired v2.
+
+### Changed
+- `SKILL.md` routes to the new guides/templates and adds a motion quality rule.
+- `scaffold.py` fills placeholders in `.php` and `.scss` files.
+- CI validates and builds the new templates.
+
 ## [1.1.0] — 2026-11-15
 ### Added
 - **Starter templates**: `landing-page`, `nextjs-saas` (Next.js 15 + Supabase, auth, RLS, tests), `expo-app` (Expo Router), `fastapi-api` (JWT + CRUD + tests), `python-desktop-pos` (Tkinter + SQLite POS).

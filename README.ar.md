@@ -17,11 +17,12 @@
 - 🚀 **النشر:** Vercel، Netlify، Supabase، Docker، GitHub Actions
 
 ## 📦 المحتويات
-- **5 قوالب مختبَرة:** صفحة هبوط، SaaS بـ Next.js + Supabase، تطبيق Expo، واجهة FastAPI، نقطة بيع بـ Python
+- **9 قوالب مختبَرة:** صفحة هبوط، SaaS بـ Next.js + Supabase، تطبيق Expo، واجهة FastAPI، نقطة بيع بـ Python، React + shadcn + GSAP، شرائح متحركة، قالب WordPress، فيديو Remotion
+- **✨ الإصدار 2:** حركة GSAP، ثلاثي الأبعاد بـ Three.js، قوالب WordPress بالكتل، عروض HTML، فيديوهات Remotion
 - **3 سكربتات:** إنشاء مشروع، فحص الاختبارات والبناء، توليد ملف ‎.env.example‎
-- **8 أوامر** في Claude Code: ‎/new-website‎، ‎/new-webapp‎، ‎/new-mobile‎، ‎/new-desktop‎، ‎/new-api‎، ‎/fix-bug‎، ‎/review‎، ‎/deploy‎
-- **11 دليلًا:** التصميم ودعم RTL، المدفوعات (Stripe، PayPal، Tap، PayTabs، الدفع عند الاستلام)، ميزات القطاعات، الذكاء الاصطناعي، تحسين محركات البحث، الاختبار
-- **أكثر من 40 طلبًا جاهزًا:** في [PROMPTS.md](PROMPTS.md)
+- **14 أمرًا** في Claude Code: ‎/new-website‎، ‎/new-webapp‎، ‎/new-mobile‎، ‎/new-desktop‎، ‎/new-api‎، ‎/new-animated-site‎، ‎/new-3d‎، ‎/new-artifact‎، ‎/new-slides‎، ‎/new-video‎، ‎/new-wordpress‎، ‎/fix-bug‎، ‎/review‎، ‎/deploy‎
+- **20 دليلًا:** التصميم ودعم RTL، المدفوعات (Stripe، PayPal، Tap، PayTabs، الدفع عند الاستلام)، ميزات القطاعات، الذكاء الاصطناعي، تحسين محركات البحث، الاختبار
+- **أكثر من 60 طلبًا جاهزًا:** في [PROMPTS.md](PROMPTS.md)
 
 ## 📥 التثبيت
 

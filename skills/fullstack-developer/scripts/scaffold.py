@@ -16,7 +16,7 @@ import sys
 from pathlib import Path
 
 TEMPLATES = Path(__file__).resolve().parent.parent / "templates"
-TEXT_EXT = {".html", ".md", ".json", ".ts", ".tsx", ".js", ".mjs", ".css", ".py", ".txt", ".sql", ".toml", ".yml", ".yaml", ".example"}
+TEXT_EXT = {".html", ".md", ".json", ".ts", ".tsx", ".js", ".mjs", ".css", ".py", ".txt", ".sql", ".toml", ".yml", ".yaml", ".example", ".php", ".scss"}
 SKIP = {"node_modules", ".next", ".expo", "__pycache__", ".pytest_cache", ".venv", "dist", "build"}
 
 

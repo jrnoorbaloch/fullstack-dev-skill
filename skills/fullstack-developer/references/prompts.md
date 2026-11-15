@@ -112,6 +112,68 @@ You can write in any language (English, Urdu, Hindi, Arabic, Spanish, etc.). Cla
 
 ---
 
+## ✨ 9. Animated Websites (GSAP)
+
+**Premium landing page**
+> Build a premium animated landing page for [product: ___] with GSAP: a hero intro timeline with SplitText headline, scroll-triggered reveals, a pinned "how it works" story section, animated stat counters and magnetic buttons. Style: [dark & glowing / clean & minimal / bold & colorful]. Respect reduced motion.
+
+**Scroll story**
+> Turn this content into a scroll-driven story page with GSAP ScrollTrigger: [paste content]. Pin each chapter, scrub images and text, and add a progress bar.
+
+**Portfolio with motion**
+> Build an animated portfolio for [name, profession]: page-load intro, horizontal-scroll project gallery, hover previews, smooth page transitions.
+
+**Add animation to my site**
+> Add tasteful GSAP animations to this existing site [paste code / repo]: entrance animations, scroll reveals and button micro-interactions. Don't change the layout.
+
+---
+
+## 🧊 10. 3D (Three.js / React Three Fiber)
+
+> Build a landing page with an interactive 3D hero using Three.js: a [product/shape] that rotates, follows the mouse and changes color from a picker. Scroll should move the camera.
+
+> Build a 3D product viewer in React Three Fiber for my [product] .glb model: orbit controls, color/material options, hotspots with info, and a fallback image.
+
+> Create a 3D data visualization of [data] (bars/globe/points) with tooltips on hover.
+
+---
+
+## 🧩 11. Single-File Artifacts (React + Tailwind + shadcn)
+
+> Build a single-file [calculator / quiz / dashboard / pricing configurator / kanban board] with React, Tailwind and shadcn/ui. It must work as one HTML file opened from disk.
+
+> Build an interactive explainer about [topic] with tabs, sliders and GSAP animations, as one shareable HTML file.
+
+---
+
+## 🎤 12. Presentations (HTML Slides)
+
+> Create an animated pitch deck for [startup/product] with 10 slides: problem, solution, demo, market, business model, traction, team, ask. Offer me 3 visual styles first.
+
+> Turn these notes into an animated HTML presentation for a talk: [paste notes]. Keep one idea per slide and add speaker notes.
+
+---
+
+## 🎬 13. Videos (Remotion)
+
+> Create a 20-second promo video with Remotion for [product]: intro with brand name, 3 key features, call to action with the URL. Render both 16:9 and 9:16 versions.
+
+> Build a Remotion template that generates personalized videos from a JSON list of [customers/products], one MP4 per item.
+
+> Make an animated captions video from this transcript: [paste].
+
+---
+
+## 📝 14. WordPress
+
+> Build a WordPress block theme for my [business type]: theme.json with my brand colors [___] and fonts, header/footer, home page with hero, services, testimonials and contact patterns, plus a dark style variation.
+
+> Create a custom Gutenberg block "[block name]" with [fields], editable in the editor, rendered with PHP, with color and spacing support.
+
+> Convert this HTML/Figma design into a WordPress block theme with patterns so my client can edit everything: [paste / link].
+
+---
+
 ## 💡 Tips for Better Results
 1. Say **what** you want, **who** it's for, and the **must-have features**.
 2. Name your preferred language/framework if you have one; otherwise Claude picks a solid default.

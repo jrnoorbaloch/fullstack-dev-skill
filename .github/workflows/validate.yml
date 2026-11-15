@@ -65,3 +65,52 @@ jobs:
       - run: npm run lint
       - run: npm test
       - run: npm run build
+
+  react-artifact-template:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: skills/fullstack-developer/templates/react-vite-shadcn
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm install --no-audit --no-fund
+      - run: npm run lint
+      - run: npm run build
+      - name: Build must be a single self-contained HTML file
+        run: |
+          test "$(ls dist | wc -l)" = "1"
+          ! grep -q '<script[^>]*src="/assets' dist/index.html
+
+  remotion-template:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: skills/fullstack-developer/templates/remotion-video
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm install --no-audit --no-fund
+      - run: npm run lint
+
+  wordpress-template:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: skills/fullstack-developer/templates/wordpress-block-theme
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: PHP syntax
+        run: find . -name "*.php" -not -path "*/node_modules/*" -print0 | xargs -0 -n1 php -l
+      - name: JSON files are valid
+        run: for f in theme/theme.json theme/styles/*.json blocks-plugin/src/*/block.json .wp-env.json; do python3 -m json.tool "$f" > /dev/null; done
+      - name: Build blocks
+        working-directory: skills/fullstack-developer/templates/wordpress-block-theme/blocks-plugin
+        run: npm install --no-audit --no-fund && npm run build

@@ -15,11 +15,12 @@ Dale a Claude una sola instrucción y construirá un **sitio web, aplicación we
 - 🚀 **Despliegue:** Vercel, Netlify, Supabase, Docker, GitHub Actions
 
 ## 📦 Qué incluye
-- **5 plantillas probadas:** landing page, SaaS con Next.js + Supabase, app Expo, API FastAPI, punto de venta en Python
+- **9 plantillas probadas:** landing page, SaaS con Next.js + Supabase, app Expo, API FastAPI, punto de venta en Python, React + shadcn + GSAP, diapositivas animadas, tema WordPress, vídeo Remotion
+- **✨ Versión 2:** animaciones GSAP, 3D con Three.js, temas de bloques WordPress, presentaciones HTML, vídeos Remotion
 - **3 scripts:** crear proyecto, verificar tests/build, generar `.env.example`
-- **8 comandos** para Claude Code: `/new-website` `/new-webapp` `/new-mobile` `/new-desktop` `/new-api` `/fix-bug` `/review` `/deploy`
-- **11 guías:** diseño, pagos (Stripe, PayPal, contra reembolso y más), sectores, IA, SEO, testing
-- **Más de 40 prompts listos:** en [PROMPTS.md](PROMPTS.md)
+- **14 comandos** para Claude Code: `/new-website` `/new-webapp` `/new-mobile` `/new-desktop` `/new-api` `/new-animated-site` `/new-3d` `/new-artifact` `/new-slides` `/new-video` `/new-wordpress` `/fix-bug` `/review` `/deploy`
+- **20 guías:** diseño, pagos (Stripe, PayPal, contra reembolso y más), sectores, IA, SEO, testing
+- **Más de 60 prompts listos:** en [PROMPTS.md](PROMPTS.md)
 
 ## 📥 Instalación
 
